@@ -8,10 +8,7 @@ import '../styles/HomeRoute.scss';
 const HomeRoute = () => {
   return (
     <div className="home-route">
-      <TopNavigation>
-        <TopicList />
-        <FavBadge />
-      </TopNavigation>
+      <TopNavigation />
       <PhotoList />
     </div>
   );
