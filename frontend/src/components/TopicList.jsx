@@ -1,7 +1,6 @@
 import React from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
-import topics from "mocks/topics";
 
 const sampleDataForTopicList = [
   {
@@ -21,11 +20,10 @@ const sampleDataForTopicList = [
   },
 ];
 
-const TopicList = () => {
+const TopicList = (props) => {
   return (
     <div className="top-nav-bar__topic-list">
-      {/* Insert React */}
-      {topics.map((topic, index) => 
+      {props.topics.map((topic, index) => 
         <TopicListItem key={index} data={topic}/>
       )}
     </div>
