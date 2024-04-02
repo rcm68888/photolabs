@@ -14,7 +14,7 @@ const PhotoListItem = (props) => {
           </p>
         </div>
       </div>
-  </li>
+    </li>
   )
 };
 export default PhotoListItem;
