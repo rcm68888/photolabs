@@ -4,6 +4,7 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = (props) => {
+  console.log(props.photoData);
   const handleClick = () =>{
     const action = {
       type: 'DISPLAY',
