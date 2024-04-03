@@ -62,7 +62,7 @@ const PhotoList = (props) => {
   }
   return(<ul className="photo-list">
    {props.photos.map((photo, index) =>
-    <PhotoListItem key={index} data={photo} state={props.state} dispatch={props.dispatch} onClick={handleClick}/>
+    <PhotoListItem key={index} data={photo} onClick={handleClick}/>
   )}
   </ul>)
 };
