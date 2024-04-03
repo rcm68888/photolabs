@@ -16,7 +16,9 @@ const HomeRoute = (props) => {
   const [state, dispatch] = useReducer((state, action)=>{
     switch(action.type){
       case "FAVOURITE":
-      return state;
+      return {...state, [action.id]: action.payload}
+      default:
+        return state;
     }
   },stateObject);
 
