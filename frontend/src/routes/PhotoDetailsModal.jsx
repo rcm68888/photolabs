@@ -4,7 +4,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = (props) => {
   const handleClick = () =>{
-    props.setModal(!props.modal);
+    props.setModal(false);
   }
   return (
     <div className="photo-details-modal">
