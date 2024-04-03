@@ -6,7 +6,21 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [modalState, dispatch ] = useReducer((modalState, action)=>{
+  const stateObject = photos.reduce((result, _, index) => {
+    result[index + 1] = false;
+    return result;
+  }, {});
+
+  const [state, dispatch] = useReducer((state, action)=>{
+    switch(action.type){
+      case "FAVOURITE":
+        return {...state, [action.id]: action.payload}
+      default:
+        return state;
+    }
+  },stateObject);
+
+  const [modalState, modalDispatch ] = useReducer((modalState, action)=>{
     switch(action.type){
       case "DISPLAY":
       return {...modalState, display: action.payload.display, id: action.payload.id};
@@ -14,8 +28,8 @@ const App = () => {
   },{id: 0, display: false});  
   return (
   <div className="App">
-    <HomeRoute photos={photos} topics={topics} modalDispatch={dispatch} modalState={modalState}/>
-    {modalState.display && <PhotoDetailsModal photoData={modalState} modalDispatch={dispatch} />}
+    <HomeRoute photos={photos} topics={topics} modalDispatch={modalDispatch} modalState={modalState}  state={state} dispatch={dispatch}/>
+    {modalState.display && <PhotoDetailsModal modalState={modalState} modalDispatch={modalDispatch} state={state} dispatch={dispatch}/>}
   </div>
   );
 };
