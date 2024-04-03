@@ -5,18 +5,18 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = (props) => {
   const handleClick = () => {
     const action = {
-      type: 'setPhotoSelected',
+      type: 'DISPLAY',
       payload:{
-        modalDisplay: true,
-        modalId: props.data.id
+        display: true,
+        id: props.data.id
       }
-  };
-  props.dispatch(action);
+    };
+    props.modalDispatch(action);
   }
   return (
     <li  className="photo-list__item" onClick={handleClick}>
-      <PhotoFavButton selected={props.state[props.data.id]} dispatch={props.dispatch} id={props.data.id} state={props.state}/>
-      <img className="photo-list__image"  src={props.data.urls.regular}></img>
+    <PhotoFavButton selected={props.modalState[props.data.id]} dispatch={props.dispatch} id={props.data.id} state={props.state}/>
+    <img className="photo-list__image"  src={props.data.urls.regular}></img>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={props.data.user.profile}></img>
         <div className="photo-list__user-info">

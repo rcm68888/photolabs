@@ -57,12 +57,10 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = (props) => {
-  const handleClick = () =>{
-    props.setModal(!props.modal);
-  }
+  console.log(props.modalState);
   return(<ul className="photo-list">
    {props.photos.map((photo, index) =>
-    <PhotoListItem key={index} data={photo} onClick={handleClick}/>
+    <PhotoListItem key={index} data={photo} modalState={props.modalState} modalDispatch={props.modalDispatch} />
   )}
   </ul>)
 };
