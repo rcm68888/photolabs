@@ -23,14 +23,13 @@ const HomeRoute = (props) => {
   },stateObject);
 
   const isFavPhotoExist = Object.values(state).includes(true);
-
   return (
     <div className="home-route">
       <TopNavigation>
         <TopicList topics={props.topics}/>
         <FavBadge isFavPhotoExist={isFavPhotoExist}/>
       </TopNavigation>
-      <PhotoList photos={props.photos} dispatch={props.dispatch} state={props.state}/>
+      <PhotoList photos={props.photos} dispatch={props.dispatch} state={props.state} setModal={props.setModal} modal={props.modal}/>
     </div>
   );
 };
