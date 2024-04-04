@@ -15,21 +15,21 @@ const App = () => {
     switch(action.type){
       case "FAVOURITE":
         return {...state, [action.id]: action.payload}
+      case "DISPLAY": 
+        return {...state, modalDisplay: action.payload.modalDisplay, modalId: action.payload.modalId};
       default:
         return state;
     }
-  },stateObject);
+  },{...stateObject, modalId: 0, modalDisplay: false} );
 
   const [modalState, modalDispatch ] = useReducer((modalState, action)=>{
     switch(action.type){
-      case "DISPLAY":
-      return {...modalState, display: action.payload.display, id: action.payload.id};
     }
-  },{id: 0, display: false});  
+  },{});  
   return (
   <div className="App">
-    <HomeRoute photos={photos} topics={topics} modalDispatch={modalDispatch} modalState={modalState}  state={state} dispatch={dispatch}/>
-    {modalState.display && <PhotoDetailsModal modalState={modalState} modalDispatch={modalDispatch} state={state} dispatch={dispatch}/>}
+    <HomeRoute photos={photos} topics={topics} state={state} dispatch={dispatch}/>
+    {state.modalDisplay && <PhotoDetailsModal modalState={modalState} modalDispatch={modalDispatch} state={state} dispatch={dispatch}/>}
   </div>
   );
 };
