@@ -11,7 +11,7 @@ const App = () => {
   console.log("state", state);
   return (
   <div className="App">
-    <HomeRoute photos={state.photosData} topics={state.topicDatata} state={state} dispatch={dispatch}/>
+    <HomeRoute photos={state.photoData} topics={state.topicDatata} state={state} dispatch={dispatch}/>
     {state.modalDisplay && <PhotoDetailsModal state={state} dispatch={dispatch}/>}
   </div>
   );
