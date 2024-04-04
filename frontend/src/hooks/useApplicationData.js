@@ -12,6 +12,10 @@ export default function useApplicationData (){
         return {...state, photoData: action.payload}
       case "SET_TOPIC_DATA": 
         return {...state, topicData: action.payload};
+      case "GET_PHOTOS_BY_TOPIC":
+        return {...state, topicID: action.payload}
+      case "SET_TOPIC_PHOTOS":
+        return {...state, topicPhotos: action.payload}
       case "updateToFavPhotoIds":
         return {...state, [action.id]: action.payload}
       case "setPhotoSelected": 
@@ -24,20 +28,25 @@ export default function useApplicationData (){
   },{...initialState, modalId: 0, modalDisplay: false} );
 
   useEffect(()=>{
-    fetch('http://localhost:8001/api/photos')
-    .then((res)=>{return res.json()})
-    .then((res)=>{
-      dispatch({type:"SET_PHOTO_DATA", payload:res})})
-    .catch((error) => { console.error('An error occurred:', error); })
+    Promise.all([
+      fetch('/api/photos').then(res=>res.json()),
+      fetch('/api/topics').then(res=>res.json())
+    ])
+    .then(([photos, topics])=>{
+      dispatch({type:"SET_PHOTO_DATA", payload:photos});
+      dispatch({type:"SET_TOPIC_DATA", payload:topics});
+    })
   }, [])
 
   useEffect(()=>{
-    fetch('http://localhost:8001/api/topics')
+    if(state.topicID){
+      fetch(`/api/topics/photos/${state.topicID}`)
     .then((res)=>{return res.json()})
     .then((res)=>{
-      dispatch({type:"SET_TOPIC_DATA", payload:res})})
-    .catch((error) => { console.error('An error occurred:', error); })
-  }, [])
+      dispatch({type:"SET_PHOTOS_TOPIC", payload:res})
+      dispatch({type:"SET_PHOTO_DATA", payload:res})})
+    }
+  }, [state.topicID]);
 
   return { state, dispatch }
 }
