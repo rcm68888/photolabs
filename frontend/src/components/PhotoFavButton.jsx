@@ -5,7 +5,7 @@ import '../styles/PhotoFavButton.scss';
 function PhotoFavButton(props) {
   const handleClick = (state) => {
     const action = {
-      type: 'FAVOURITE',
+      type: 'updateToFavPhotoIds',
       payload: !state[props.id],
       id: props.id
     };

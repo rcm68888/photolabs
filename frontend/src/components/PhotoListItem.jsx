@@ -5,7 +5,7 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = (props) => {
   const handleClick = () => {
     const action = {
-      type: 'DISPLAY',
+      type: 'setPhotoSelected',
       payload:{
         modalDisplay: true,
         modalId: props.data.id
