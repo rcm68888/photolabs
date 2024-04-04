@@ -28,8 +28,7 @@ export default function useApplicationData (){
     .then((res)=>{return res.json()})
     .then((res)=>{
       dispatch({type:"SET_PHOTO_DATA", payload:res})})
-    .catch (error) {
-      console.error('An error occurred:', error);
+    .catch((error) => { console.error('An error occurred:', error); })
   }, [])
 
   useEffect(()=>{
@@ -37,8 +36,7 @@ export default function useApplicationData (){
     .then((res)=>{return res.json()})
     .then((res)=>{
       dispatch({type:"SET_TOPIC_DATA", payload:res})})
-    .catch (error) {
-      console.error('An error occurred:', error);
+    .catch((error) => { console.error('An error occurred:', error); })
   }, [])
 
   return { state, dispatch }
