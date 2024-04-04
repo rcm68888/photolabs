@@ -23,20 +23,22 @@ export default function useApplicationData (){
     }
   },{...initialState, modalId: 0, modalDisplay: false} );
 
-  seEffect(()=>{
+  useEffect(()=>{
     fetch('http://localhost:8001/api/photos')
     .then((res)=>{return res.json()})
     .then((res)=>{
-      console.log('res', res);
       dispatch({type:"SET_PHOTO_DATA", payload:res})})
+    .catch (error) {
+      console.error('An error occurred:', error);
   }, [])
 
   useEffect(()=>{
     fetch('http://localhost:8001/api/topics')
     .then((res)=>{return res.json()})
     .then((res)=>{
-      console.log('res topics', res);
       dispatch({type:"SET_TOPIC_DATA", payload:res})})
+    .catch (error) {
+      console.error('An error occurred:', error);
   }, [])
 
   return { state, dispatch }
