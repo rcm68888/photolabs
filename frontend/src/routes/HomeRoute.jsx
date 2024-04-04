@@ -1,5 +1,4 @@
 import React, {useReducer} from 'react';
-import PhotoList from './components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 import TopicList from 'components/TopicList';
 import PhotoList from 'components/PhotoList';

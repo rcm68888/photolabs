@@ -6,7 +6,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const handleClick = () =>{
+  const handleClick = () => {
     const action = {
       type: 'onClosePhotoDetailsModal',
       payload:{
@@ -35,6 +35,7 @@ const PhotoDetailsModal = (props) => {
         </div>
       </div>
       <PhotoList photos={Object.values(photolink.similar_photos)} dispatch={props.dispatch} state={props.state} />
+      </div>
     </div>
   )
 };
