@@ -1,7 +1,8 @@
 import React, {useReducer} from 'react';
-import HomeRoute from 'routes/HomeRoute';
-import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import useApplicationData from '../src/hooks/useApplicationData'
+import HomeRoute from './routes/HomeRoute';
+import PhotoDetailsModal from './routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
+import './App.scss';
 
 const App = () => {
   const {
